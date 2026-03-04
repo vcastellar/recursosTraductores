@@ -109,13 +109,36 @@
     </section>
 
     <section>
-      <h2>Limpiador de texto</h2>
-      <p class="section-description">Reduce espacios duplicados para dejar el texto más limpio antes de entregar o reutilizar.</p>
+      <h2>Limpiador de texto avanzado</h2>
+      <p class="section-description">Depura, normaliza y estandariza texto con reglas configurables para reutilizar contenido con menos edición manual.</p>
 
       <label for="cleanInput">Texto original</label>
-      <textarea id="cleanInput" placeholder="Pega texto con saltos o espacios irregulares..."></textarea>
+      <textarea id="cleanInput" placeholder="Pega texto con saltos, HTML, caracteres especiales o formato irregular..."></textarea>
 
-      <button onclick="cleanText()">Limpiar texto</button>
+      <div class="cleaner-options">
+        <label class="option"><input type="checkbox" id="optTrimSpaces" checked> Recortar espacios al inicio/final y reducir espacios múltiples</label>
+        <label class="option"><input type="checkbox" id="optNormalizeBreaks"> Unificar saltos de línea en espacios (un solo párrafo)</label>
+        <label class="option"><input type="checkbox" id="optRemoveEmptyLines" checked> Eliminar líneas vacías</label>
+        <label class="option"><input type="checkbox" id="optRemoveDuplicateLines"> Eliminar líneas duplicadas</label>
+        <label class="option"><input type="checkbox" id="optStripHtml" checked> Eliminar etiquetas HTML</label>
+        <label class="option"><input type="checkbox" id="optNormalizeUnicode" checked> Normalizar Unicode (NFKC)</label>
+        <label class="option"><input type="checkbox" id="optRemoveDiacritics"> Eliminar acentos/diacríticos</label>
+        <label class="option"><input type="checkbox" id="optRemoveUrls"> Eliminar URLs</label>
+        <label class="option"><input type="checkbox" id="optRemoveEmails"> Eliminar correos electrónicos</label>
+        <label class="option"><input type="checkbox" id="optRemoveHashtags"> Eliminar hashtags</label>
+        <label class="option"><input type="checkbox" id="optRemoveEmojis"> Eliminar emojis</label>
+        <label class="option"><input type="checkbox" id="optKeepAlnum"> Conservar solo caracteres alfanuméricos (y espacios)</label>
+      </div>
+
+      <label for="customPattern">Patrón personalizado (regex) a eliminar (opcional)</label>
+      <input id="customPattern" placeholder="Ej.: \bTODO\b|\[DRAFT\]">
+
+      <div class="buttons">
+        <button onclick="cleanText()">Limpiar texto</button>
+        <button onclick="copyCleanText()">Copiar resultado</button>
+      </div>
+
+      <p id="cleanSummary" class="result"></p>
 
       <label for="cleanOutput">Texto limpio</label>
       <textarea id="cleanOutput" placeholder="El resultado aparecerá aquí..."></textarea>
