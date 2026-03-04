@@ -180,14 +180,15 @@ button:hover {
   border: 1px dashed var(--border);
   border-radius: 8px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 8px 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
   background: #f8faff;
 }
 
 .option {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
   gap: 8px;
   margin: 0;
   font-weight: 500;
@@ -195,7 +196,7 @@ button:hover {
 
 .option input {
   width: auto;
-  margin-top: 2px;
+  margin: 0;
 }
 
 .result {
@@ -203,8 +204,10 @@ button:hover {
   font-weight: 600;
 }
 
-.false-friends {
-  padding-left: 20px;
+@media (max-width: 780px) {
+  .cleaner-options {
+    grid-template-columns: 1fr;
+  }
 }
 
 footer {
