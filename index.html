@@ -134,6 +134,15 @@
       <input id="customPattern" placeholder="Ej.: \bTODO\b|\[DRAFT\]">
 
       <div class="buttons">
+        <button onclick="detectHiddenChars()">Ver caracteres ocultos</button>
+      </div>
+
+      <div id="hiddenCharsPanel" class="hidden-chars-panel" hidden>
+        <p class="hidden-chars-title">Selecciona qué caracteres ocultos quieres eliminar al limpiar:</p>
+        <div id="hiddenCharsList" class="hidden-chars-list"></div>
+      </div>
+
+      <div class="buttons">
         <button onclick="cleanText()">Limpiar texto</button>
         <button onclick="copyCleanText()">Copiar resultado</button>
       </div>

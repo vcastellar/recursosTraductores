@@ -45,6 +45,86 @@ function stripHtml(text) {
     .replace(/&nbsp;/gi, " ");
 }
 
+const HIDDEN_CHARACTER_DEFINITIONS = [
+  { char: "\u00A0", name: "Espacio de no separación (NBSP)" },
+  { char: "\u200B", name: "Espacio de ancho cero (ZWSP)" },
+  { char: "\u200C", name: "No-unión de ancho cero (ZWNJ)" },
+  { char: "\u200D", name: "Unión de ancho cero (ZWJ)" },
+  { char: "\u2060", name: "Separador de palabras invisible (WJ)" },
+  { char: "\uFEFF", name: "Marca de orden de bytes / no-separación (BOM)" },
+  { char: "\u200E", name: "Marca izquierda-a-derecha (LRM)" },
+  { char: "\u200F", name: "Marca derecha-a-izquierda (RLM)" },
+  { char: "\t", name: "Tabulación" },
+  { char: "\r", name: "Retorno de carro" },
+  { char: "\n", name: "Salto de línea" }
+];
+
+function getReadableChar(char) {
+  const code = char.codePointAt(0).toString(16).toUpperCase().padStart(4, "0");
+  const escaped = JSON.stringify(char).slice(1, -1);
+  return `U+${code} (${escaped})`;
+}
+
+function countOccurrences(text, char) {
+  return [...text].filter((currentChar) => currentChar === char).length;
+}
+
+function detectHiddenChars() {
+  const text = document.getElementById("cleanInput").value;
+  const panel = document.getElementById("hiddenCharsPanel");
+  const list = document.getElementById("hiddenCharsList");
+  const summaryElement = document.getElementById("cleanSummary");
+
+  list.innerHTML = "";
+
+  if (!text) {
+    panel.hidden = true;
+    summaryElement.innerText = "Pega un texto primero para detectar caracteres ocultos.";
+    return;
+  }
+
+  const foundChars = HIDDEN_CHARACTER_DEFINITIONS
+    .map((definition) => ({
+      ...definition,
+      count: countOccurrences(text, definition.char)
+    }))
+    .filter((definition) => definition.count > 0);
+
+  if (!foundChars.length) {
+    panel.hidden = true;
+    summaryElement.innerText = "No se detectaron caracteres ocultos de la lista analizada.";
+    return;
+  }
+
+  foundChars.forEach((definition, index) => {
+    const row = document.createElement("label");
+    row.className = "option";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "hidden-char-check";
+    checkbox.id = `hiddenChar_${index}`;
+    checkbox.dataset.char = definition.char;
+
+    const textNode = document.createTextNode(`${definition.name} · ${getReadableChar(definition.char)} · ${definition.count} coincidencia(s)`);
+
+    row.appendChild(checkbox);
+    row.appendChild(textNode);
+    list.appendChild(row);
+  });
+
+  panel.hidden = false;
+  summaryElement.innerText = "Caracteres ocultos detectados. Marca los que quieras eliminar al limpiar.";
+}
+
+function removeSelectedHiddenChars(text) {
+  const selectedChars = Array.from(document.querySelectorAll(".hidden-char-check:checked"))
+    .map((checkbox) => checkbox.dataset.char)
+    .filter(Boolean);
+
+  return selectedChars.reduce((result, char) => result.split(char).join(""), text);
+}
+
 function cleanText() {
   const inputElement = document.getElementById("cleanInput");
   const outputElement = document.getElementById("cleanOutput");
@@ -100,6 +180,8 @@ function cleanText() {
   if (options.removeDiacritics) {
     text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
+
+  text = removeSelectedHiddenChars(text);
 
   const customPatternInput = document.getElementById("customPattern").value.trim();
   if (customPatternInput) {
