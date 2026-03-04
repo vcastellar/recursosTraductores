@@ -198,41 +198,6 @@ function searchReverso() {
   window.open(`https://context.reverso.net/translation/english-spanish/${q}`, "_blank");
 }
 
-// CONVERTIR NUMEROS SIMPLE
-
-function convertNumber() {
-  const map = {
-    one: 1,
-    two: 2,
-    three: 3,
-    four: 4,
-    five: 5,
-    six: 6,
-    seven: 7,
-    eight: 8,
-    nine: 9,
-    ten: 10
-  };
-
-  const text = document.getElementById("numberInput").value.toLowerCase().trim();
-  document.getElementById("numberResult").innerText = map[text] ?? "No reconocido";
-}
-
-// CONVERTIR FECHA
-
-function convertDate() {
-  const input = document.getElementById("dateInput").value;
-  const d = new Date(input);
-
-  if (!isNaN(d)) {
-    const months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-    const result = `${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()}`;
-    document.getElementById("dateResult").innerText = result;
-  } else {
-    document.getElementById("dateResult").innerText = "Fecha no válida";
-  }
-}
-
 // CALCULADORA
 
 function calculateBudget() {
