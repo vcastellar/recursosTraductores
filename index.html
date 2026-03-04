@@ -1,218 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Translator Toolkit | Recursos para traductores EN → ES</title>
-
-<link rel="stylesheet" href="styles.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translator Toolkit | Recursos para traductores EN → ES</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<header>
-
-<h1>Translator Toolkit</h1>
-
-<p>Herramientas y recursos para traductores inglés → español</p>
-
-<input id="searchResources" placeholder="Buscar recurso...">
-
-<button id="toggleDark">🌙</button>
-
-</header>
-
-
-<section>
-
-<h2>Recursos para traductores</h2>
-
-<div class="resources">
-
-<a class="card" href="https://www.wordreference.com" target="_blank">
-<h3>WordReference</h3>
-<p>Diccionario bilingüe</p>
-</a>
-
-<a class="card" href="https://dictionary.cambridge.org" target="_blank">
-<h3>Cambridge Dictionary</h3>
-<p>Diccionario inglés</p>
-</a>
-
-<a class="card" href="https://www.merriam-webster.com" target="_blank">
-<h3>Merriam-Webster</h3>
-<p>Diccionario inglés</p>
-</a>
-
-<a class="card" href="https://www.collinsdictionary.com" target="_blank">
-<h3>Collins Dictionary</h3>
-<p>Diccionario y ejemplos</p>
-</a>
-
-<a class="card" href="https://www.linguee.com" target="_blank">
-<h3>Linguee</h3>
-<p>Corpus de traducciones</p>
-</a>
-
-<a class="card" href="https://www.deepl.com" target="_blank">
-<h3>DeepL</h3>
-<p>Traductor IA</p>
-</a>
-
-<a class="card" href="https://context.reverso.net" target="_blank">
-<h3>Reverso Context</h3>
-<p>Ejemplos reales</p>
-</a>
-
-<a class="card" href="https://iate.europa.eu" target="_blank">
-<h3>IATE</h3>
-<p>Terminología UE</p>
-</a>
-
-<a class="card" href="https://unterm.un.org" target="_blank">
-<h3>UNTERM</h3>
-<p>Terminología ONU</p>
-</a>
-
-<a class="card" href="https://dle.rae.es" target="_blank">
-<h3>RAE</h3>
-<p>Diccionario español</p>
-</a>
-
-<a class="card" href="https://www.fundeu.es" target="_blank">
-<h3>Fundéu</h3>
-<p>Recomendaciones lingüísticas</p>
-</a>
-
-<a class="card" href="https://omegat.org" target="_blank">
-<h3>OmegaT</h3>
-<p>CAT gratuito</p>
-</a>
-
-</div>
-
-</section>
-
-
-<section>
-
-<h2>Buscador en diccionarios</h2>
-
-<input id="dictionarySearch" placeholder="Buscar palabra...">
-
-<div class="buttons">
-
-<button onclick="searchWR()">WordReference</button>
-<button onclick="searchLinguee()">Linguee</button>
-<button onclick="searchDeepl()">DeepL</button>
-<button onclick="searchReverso()">Reverso</button>
-
-</div>
-
-</section>
-
-
-<section>
-
-<h2>Contador de palabras</h2>
-
-<textarea id="textInput"></textarea>
-
-<div class="stats">
-
-<p>Palabras: <span id="words">0</span></p>
-<p>Caracteres: <span id="characters">0</span></p>
-<p>Caracteres sin espacios: <span id="charactersNoSpaces">0</span></p>
-
-</div>
-
-</section>
-
-
-<section>
-
-<h2>Limpiador de texto</h2>
-
-<textarea id="cleanInput"></textarea>
-
-<button onclick="cleanText()">Limpiar texto</button>
-
-<textarea id="cleanOutput"></textarea>
-
-</section>
-
-
-<section>
-
-<h2>Conversor de números inglés → español</h2>
-
-<input id="numberInput" placeholder="one hundred twenty">
-
-<button onclick="convertNumber()">Convertir</button>
-
-<p id="numberResult"></p>
-
-</section>
-
-
-<section>
-
-<h2>Conversor de fechas</h2>
-
-<input id="dateInput" placeholder="March 4, 2026">
-
-<button onclick="convertDate()">Convertir</button>
-
-<p id="dateResult"></p>
-
-</section>
-
-
-<section>
-
-<h2>Calculadora de presupuesto</h2>
-
-<input id="pricePerWord" placeholder="Precio por palabra">
-
-<input id="wordCount" placeholder="Número de palabras">
-
-<button onclick="calculateBudget()">Calcular</button>
-
-<p id="budgetResult"></p>
-
-</section>
-
-
-<section>
-
-<h2>Falsos amigos comunes</h2>
-
-<ul>
-
-<li>Actually → en realidad</li>
-<li>Eventually → finalmente</li>
-<li>Library → biblioteca</li>
-<li>Assist → ayudar</li>
-<li>Fabric → tela</li>
-<li>Realize → darse cuenta</li>
-
-</ul>
-
-</section>
-
-
-<footer>
-
-<p>Translator Toolkit</p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
+  <header class="hero">
+    <div class="hero-top">
+      <h1>Translator Toolkit</h1>
+      <button id="toggleDark" aria-label="Cambiar tema">🌙</button>
+    </div>
+    <p class="subtitle">Herramientas y recursos para traductores de inglés → español</p>
+    <p class="helper-text">Todo en un solo lugar: consulta, limpia, convierte y calcula sin cambiar de pestaña constantemente.</p>
+
+    <div class="search-wrap">
+      <label for="searchResources">Buscar recurso por nombre o descripción</label>
+      <input id="searchResources" placeholder="Ej.: diccionario, terminología, CAT...">
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Recursos recomendados</h2>
+      <p class="section-description">Accesos directos a diccionarios, corpus y herramientas clave para el flujo de trabajo de traducción.</p>
+
+      <div class="resources">
+        <a class="card" href="https://www.wordreference.com" target="_blank" rel="noopener noreferrer">
+          <h3>WordReference</h3>
+          <p>Diccionario bilingüe y foro con dudas frecuentes.</p>
+        </a>
+        <a class="card" href="https://dictionary.cambridge.org" target="_blank" rel="noopener noreferrer">
+          <h3>Cambridge Dictionary</h3>
+          <p>Definiciones y ejemplos de uso en inglés actual.</p>
+        </a>
+        <a class="card" href="https://www.merriam-webster.com" target="_blank" rel="noopener noreferrer">
+          <h3>Merriam-Webster</h3>
+          <p>Diccionario monolingüe con matices semánticos.</p>
+        </a>
+        <a class="card" href="https://www.collinsdictionary.com" target="_blank" rel="noopener noreferrer">
+          <h3>Collins Dictionary</h3>
+          <p>Diccionario con ejemplos y sinónimos útiles.</p>
+        </a>
+        <a class="card" href="https://www.linguee.com" target="_blank" rel="noopener noreferrer">
+          <h3>Linguee</h3>
+          <p>Corpus de traducciones con contexto real.</p>
+        </a>
+        <a class="card" href="https://www.deepl.com" target="_blank" rel="noopener noreferrer">
+          <h3>DeepL</h3>
+          <p>Motor de traducción automática para borradores.</p>
+        </a>
+        <a class="card" href="https://context.reverso.net" target="_blank" rel="noopener noreferrer">
+          <h3>Reverso Context</h3>
+          <p>Ejemplos reales EN/ES en diferentes registros.</p>
+        </a>
+        <a class="card" href="https://iate.europa.eu" target="_blank" rel="noopener noreferrer">
+          <h3>IATE</h3>
+          <p>Base terminológica oficial de la Unión Europea.</p>
+        </a>
+        <a class="card" href="https://unterm.un.org" target="_blank" rel="noopener noreferrer">
+          <h3>UNTERM</h3>
+          <p>Terminología multilingüe de Naciones Unidas.</p>
+        </a>
+        <a class="card" href="https://dle.rae.es" target="_blank" rel="noopener noreferrer">
+          <h3>RAE</h3>
+          <p>Diccionario normativo del español.</p>
+        </a>
+        <a class="card" href="https://www.fundeu.es" target="_blank" rel="noopener noreferrer">
+          <h3>Fundéu</h3>
+          <p>Recomendaciones de redacción y uso lingüístico.</p>
+        </a>
+        <a class="card" href="https://omegat.org" target="_blank" rel="noopener noreferrer">
+          <h3>OmegaT</h3>
+          <p>Herramienta CAT gratuita y de código abierto.</p>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Buscador rápido en diccionarios</h2>
+      <p class="section-description">Escribe un término y elige dónde buscarlo para abrir el resultado directamente.</p>
+
+      <label for="dictionarySearch">Término a consultar</label>
+      <input id="dictionarySearch" placeholder="Ej.: briefing, leverage, claim...">
+
+      <div class="buttons">
+        <button onclick="searchWR()">WordReference</button>
+        <button onclick="searchLinguee()">Linguee</button>
+        <button onclick="searchDeepl()">DeepL</button>
+        <button onclick="searchReverso()">Reverso</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contador de palabras y caracteres</h2>
+      <p class="section-description">Útil para estimar volumen de trabajo y preparar presupuestos de traducción.</p>
+
+      <label for="textInput">Pega aquí tu texto</label>
+      <textarea id="textInput" placeholder="Escribe o pega el texto que quieras analizar..."></textarea>
+
+      <div class="stats">
+        <p>Palabras: <span id="words">0</span></p>
+        <p>Caracteres: <span id="characters">0</span></p>
+        <p>Caracteres sin espacios: <span id="charactersNoSpaces">0</span></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Limpiador de texto</h2>
+      <p class="section-description">Reduce espacios duplicados para dejar el texto más limpio antes de entregar o reutilizar.</p>
+
+      <label for="cleanInput">Texto original</label>
+      <textarea id="cleanInput" placeholder="Pega texto con saltos o espacios irregulares..."></textarea>
+
+      <button onclick="cleanText()">Limpiar texto</button>
+
+      <label for="cleanOutput">Texto limpio</label>
+      <textarea id="cleanOutput" placeholder="El resultado aparecerá aquí..."></textarea>
+    </section>
+
+    <section>
+      <h2>Conversor de números inglés → español</h2>
+      <p class="section-description">Convierte números escritos en inglés básico a su valor numérico.</p>
+
+      <label for="numberInput">Número en inglés</label>
+      <input id="numberInput" placeholder="Ej.: one, five, ten">
+      <button onclick="convertNumber()">Convertir</button>
+      <p id="numberResult" class="result"></p>
+    </section>
+
+    <section>
+      <h2>Conversor de fechas</h2>
+      <p class="section-description">Pasa una fecha en inglés a formato de lectura común en español.</p>
+
+      <label for="dateInput">Fecha en inglés</label>
+      <input id="dateInput" placeholder="Ej.: March 4, 2026">
+      <button onclick="convertDate()">Convertir</button>
+      <p id="dateResult" class="result"></p>
+    </section>
+
+    <section>
+      <h2>Calculadora de presupuesto</h2>
+      <p class="section-description">Calcula rápidamente un total según tarifa por palabra y número de palabras.</p>
+
+      <label for="pricePerWord">Precio por palabra (€)</label>
+      <input id="pricePerWord" placeholder="Ej.: 0.08" type="number" step="0.01" min="0">
+
+      <label for="wordCount">Número de palabras</label>
+      <input id="wordCount" placeholder="Ej.: 1200" type="number" min="0">
+
+      <button onclick="calculateBudget()">Calcular</button>
+      <p id="budgetResult" class="result"></p>
+    </section>
+
+    <section>
+      <h2>Falsos amigos comunes</h2>
+      <p class="section-description">Términos frecuentes que generan errores de traducción por similitud engañosa.</p>
+      <ul class="false-friends">
+        <li><strong>Actually</strong> → en realidad</li>
+        <li><strong>Eventually</strong> → finalmente</li>
+        <li><strong>Library</strong> → biblioteca</li>
+        <li><strong>Assist</strong> → ayudar</li>
+        <li><strong>Fabric</strong> → tela</li>
+        <li><strong>Realize</strong> → darse cuenta</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Translator Toolkit · Hecho para traductores EN → ES</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
